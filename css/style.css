@@ -24,6 +24,7 @@ body {
 
 .container {
     max-width: 1000px;
+    min-width: 320px;
     padding: 50px 20px;
     margin: 0 auto;
     text-align: center;
@@ -75,7 +76,7 @@ body {
 }
 
 #inp{
-    
+    max-width: 100%;
     margin-right: auto;
     width: 380px;
 }
