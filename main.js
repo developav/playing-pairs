@@ -2,23 +2,32 @@
 import Card from './card.js';
 // Создаем поле для ввода
 const contEl = document.querySelector('div.container');
+const blockHead = document.createElement('div'); 
+const head = document.createElement('h1');
 const input = document.createElement('input');
 const button = document.createElement('button');
 const btn = document.createElement('button');
 const timerShow = document.createElement('div');
 timerShow.setAttribute('id', 'timer');
+contEl.prepend(blockHead);
 contEl.append(btn);
+head.classList.add('head')
+head.textContent = "Игра в пары"
 btn.textContent = 'Сыграть еще раз';
 btn.setAttribute('disabled', true);
 btn.classList.add('again');
 contEl.append(timerShow);
 button.classList.add('button');
+blockHead.classList.add('block__input')
 button.setAttribute('id', 'btn');
 input.setAttribute('id', 'inp');
 button.textContent = 'Начать';
-contEl.prepend(button);
-contEl.prepend(input);
+blockHead.prepend(button);
+blockHead.prepend(input);
+blockHead.prepend(head)
 input.setAttribute('placeholder', 'Введите желаемое количество карточек 16 max');
+
+btn.classList.add("none")
 
 button.addEventListener('click', () => {
   let inputVal = document.getElementById('inp').value;
@@ -105,6 +114,7 @@ button.addEventListener('click', () => {
         firstCard = null,
         secondCard = null,
         btn.disabled = false;
+        btn.classList.remove('none')
         btn.addEventListener('click', () => {
           container.innerHTML = '',
           cardNumberArray = [],
@@ -113,13 +123,11 @@ button.addEventListener('click', () => {
           secondCard = null;
           newGame(document.getElementById('game'), inputVal);
           btn.disabled = true;
+          btn.classList.add('none')
         });
       }
     }
   }
-
-  // eslint-disable-next-line no-multiple-empty-lines
-
   if (inputVal > 16) {
     newGame(document.getElementById('game'), inputVal = 8);
   }
